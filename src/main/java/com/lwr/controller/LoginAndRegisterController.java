@@ -25,6 +25,7 @@ public class LoginAndRegisterController extends BaseController {
     @RequestMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response, User user)
             throws ServletException, IOException {
+        request.setAttribute("loginId", user.getLoginId());
         if (StringUtils.isEmpty(user.getLoginId()) || StringUtils.isEmpty(user.getPassword())) {
             request.setAttribute("msg", "用户名和密码不能为空");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
